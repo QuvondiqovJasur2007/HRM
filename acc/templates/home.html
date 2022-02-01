@@ -1,0 +1,1495 @@
+{% extends 'base.html' %}
+{% block title %}Bosh sahifa{% endblock title %}
+{% block content %}
+    {% if user.is_authenticated %}
+    <!DOCTYPE html>
+    {% load static %}
+    <html lang="en">
+    
+    <head>
+    
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <meta name="description" content="">
+      <meta name="author" content="">
+    
+      <title>Attendor Dashboard</title>
+    
+      <!-- Custom fonts for this template-->
+      <link href="{% static 'vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
+      <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    
+      <!-- Custom styles for this template-->
+      <link href="{% static 'css/sb-admin-2.min.css' %}" rel="stylesheet">
+    
+    </head>
+    
+    <body id="page-top">
+    
+      <!-- Page Wrapper -->
+      <div id="wrapper">
+    
+        <!-- Sidebar -->
+        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+    
+          <!-- Sidebar - Brand -->
+          <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{% url 'home' %}">
+            <div class="sidebar-brand-icon rotate-n-15">
+              <i class="fas fa-laugh-wink"></i>
+            </div>
+            <div class="sidebar-brand-text mx-3">Attendor Dashboard<sup></sup></div>
+          </a>
+    
+          <!-- Divider -->
+          <hr class="sidebar-divider my-0">
+    
+          <!-- Nav Item - Dashboard -->
+          <li class="nav-item active">
+            <a class="nav-link" href="{% url 'home' %}">
+              <i class="fas fa-fw fa-tachometer-alt"></i>
+              <span>Attendor</span></a>
+          </li>
+          <!-- Divider -->
+          <hr class="sidebar-divider">
+    
+          <!-- Heading -->
+          <div class="sidebar-heading">
+            Interface
+          </div>
+    
+          <!-- Nav Item - Pages Collapse Menu -->
+          <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+              <i class="fas fa-fw fa-cog"></i>
+              <span>Components</span>
+            </a>
+            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+              <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">Custom Components:</h6>
+                <a class="collapse-item" href="{% url 'cards' %}">Cards</a>
+                <a class="collapse-item" href="{% url 'button' %}">Buttons</a>
+              </div>
+            </div>
+          </li>
+    
+          <!-- Nav Item - Utilities Collapse Menu -->
+          <!-- <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
+              <i class="fas fa-fw fa-wrench"></i>
+              <span>Utilities</span>
+            </a>
+            <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+              <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">Custom Utilities:</h6>
+                <a class="collapse-item" href="utilities-color.html">Colors</a>
+                <a class="collapse-item" href="utilities-border.html">Borders</a>
+                <a class="collapse-item" href="utilities-animation.html">Animations</a>
+                <a class="collapse-item" href="utilities-other.html">Other</a>
+              </div>
+            </div>
+          </li> -->
+    
+          <!-- Divider -->
+          <hr class="sidebar-divider">
+    
+          <!-- Heading -->
+          <div class="sidebar-heading">
+            Addons
+          </div>
+
+    
+          <!-- Nav Item - Pages Collapse Menu -->
+          <li class="nav-item">
+            <!-- <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages"> -->
+              <!-- <i class="fas fa-fw fa-folder"></i> -->
+              <!-- <span>Xodimlarni ruyxatdan utkazish</span> -->
+            </a>
+            <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+              <div class="bg-white py-2 collapse-inner rounded">
+                <!-- <h6 class="collapse-header">Ruyxatdan utish:</h6> -->
+                <!-- <a class="collapse-item" href="login.html">Kirish</a> -->
+                <!-- <a class="collapse-item" href="register.html">Ruyxatdan utish</a> -->
+                <!-- <a class="collapse-item" href="forgot-password.html">Parolni unitdingizmi</a> -->
+                <div class="collapse-divider"></div>
+                <!-- <h6 class="collapse-header">Other Pages:</h6> -->
+                <!-- <a class="collapse-item" href="404.html">404 Page</a>
+                <a class="collapse-item" href="blank.html">Blank Page</a> -->
+              </div>
+            </div>
+          </li>
+    
+          <!-- Nav Item - Charts -->
+          <!-- <li class="nav-item">
+            <a class="nav-link" href="charts.html">
+              <i class="fas fa-fw fa-chart-area"></i>
+              <span>Salom</span></a>
+          </li> -->
+    
+          <!-- Nav Item - Tables -->
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'signup' %}">
+              <i class="fas fa-fw fa-table"></i>
+              <span>Xodim qo'shish</span></a>
+          </li>
+
+                              <!-- Nav Item - Dashboard -->
+          {% comment %} <li class="nav-item">
+            <a class="nav-link" href="{% url 'logout' %}">
+              <img style="height:20px;width:20px;" src="{% static './images/55.png' %}">
+              <span>Exit</span></a>
+          </li> {% endcomment %}
+    
+          <!-- Divider -->
+          <hr class="sidebar-divider d-none d-md-block">
+    
+          <!-- Sidebar Toggler (Sidebar) -->
+          <div class="text-center d-none d-md-inline">
+            <button class="rounded-circle border-0" id="sidebarToggle"></button>
+          </div>
+    
+        </ul>
+        <!-- End of Sidebar -->
+    
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+    
+          <!-- Main Content -->
+          <div id="content">
+    
+            <!-- Topbar -->
+            <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+    
+              <!-- Sidebar Toggle (Topbar) -->
+              <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+                <i class="fa fa-bars"></i>
+              </button>
+    
+              <!-- Topbar Search -->
+              <!-- <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                <div class="input-group">
+                  <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+                  <div class="input-group-append">
+                    <button class="btn btn-primary" type="button">
+                      <i class="fas fa-search fa-sm"></i>
+                    </button>
+                  </div>
+                </div>
+              </form> -->
+    
+              <!-- Topbar Navbar -->
+              <ul class="navbar-nav ml-auto">
+    
+                <!-- Nav Item - Search Dropdown (Visible Only XS) -->
+                <li class="nav-item dropdown no-arrow d-sm-none">
+                  <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fas fa-search fa-fw"></i>
+                  </a>
+                  <!-- Dropdown - Messages -->
+                  <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in" aria-labelledby="searchDropdown">
+                    <form class="form-inline mr-auto w-100 navbar-search">
+                      <div class="input-group">
+                        <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+                        <div class="input-group-append">
+                          <button class="btn btn-primary" type="button">
+                            <i class="fas fa-search fa-sm"></i>
+                          </button>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                </li>
+    
+                <!-- Nav Item - Alerts -->
+                <li class="nav-item dropdown no-arrow mx-1">
+                  <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fas fa-bell fa-fw"></i>
+                    <!-- Counter - Alerts -->
+                    <span class="badge badge-danger badge-counter">3+</span>
+                  </a>
+                  <!-- Dropdown - Alerts -->
+                  <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
+                    <h6 class="dropdown-header">
+                      Alerts Center
+                    </h6>
+                    <a class="dropdown-item d-flex align-items-center" href="#">
+                      <div class="mr-3">
+                        <div class="icon-circle bg-primary">
+                          <i class="fas fa-file-alt text-white"></i>
+                        </div>
+                      </div>
+                      <div>
+                        <div class="small text-gray-500">December 12, 2019</div>
+                        <span class="font-weight-bold">A new monthly report is ready to download!</span>
+                      </div>
+                    </a>
+                    <a class="dropdown-item d-flex align-items-center" href="#">
+                      <div class="mr-3">
+                        <div class="icon-circle bg-success">
+                          <i class="fas fa-donate text-white"></i>
+                        </div>
+                      </div>
+                      <div>
+                        <div class="small text-gray-500">December 7, 2019</div>
+                        $290.29 has been deposited into your account!
+                      </div>
+                    </a>
+                    <a class="dropdown-item d-flex align-items-center" href="#">
+                      <div class="mr-3">
+                        <div class="icon-circle bg-warning">
+                          <i class="fas fa-exclamation-triangle text-white"></i>
+                        </div>
+                      </div>
+                      <div>
+                        <div class="small text-gray-500">December 2, 2019</div>
+                        Spending Alert: We've noticed unusually high spending for your account.
+                      </div>
+                    </a>
+                    <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
+                  </div>
+                </li>
+    
+                <!-- Nav Item - Messages -->
+                <li class="nav-item dropdown no-arrow mx-1">
+                  <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fas fa-envelope fa-fw"></i>
+                    <!-- Counter - Messages -->
+                    <span class="badge badge-danger badge-counter">7</span>
+                  </a>
+                  <!-- Dropdown - Messages -->
+                  <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="messagesDropdown">
+                    <h6 class="dropdown-header">
+                      Message Center
+                    </h6>
+                    <a class="dropdown-item d-flex align-items-center" href="#">
+                      <div class="dropdown-list-image mr-3">
+                        <img class="rounded-circle" src="https://source.unsplash.com/fn_BT9fwg_E/60x60" alt="">
+                        <div class="status-indicator bg-success"></div>
+                      </div>
+                      <div class="font-weight-bold">
+                        <div class="text-truncate">Hi there! I am wondering if you can help me with a problem I've been having.</div>
+                        <div class="small text-gray-500">Emily Fowler · 58m</div>
+                      </div>
+                    </a>
+                    <a class="dropdown-item d-flex align-items-center" href="#">
+                      <div class="dropdown-list-image mr-3">
+                        <img class="rounded-circle" src="https://source.unsplash.com/AU4VPcFN4LE/60x60" alt="">
+                        <div class="status-indicator"></div>
+                      </div>
+                      <div>
+                        <div class="text-truncate">I have the photos that you ordered last month, how would you like them sent to you?</div>
+                        <div class="small text-gray-500">Jae Chun · 1d</div>
+                      </div>
+                    </a>
+                    <a class="dropdown-item d-flex align-items-center" href="#">
+                      <div class="dropdown-list-image mr-3">
+                        <img class="rounded-circle" src="https://source.unsplash.com/CS2uCrpNzJY/60x60" alt="">
+                        <div class="status-indicator bg-warning"></div>
+                      </div>
+                      <div>
+                        <div class="text-truncate">Last month's report looks great, I am very happy with the progress so far, keep up the good work!</div>
+                        <div class="small text-gray-500">Morgan Alvarez · 2d</div>
+                      </div>
+                    </a>
+                    <a class="dropdown-item d-flex align-items-center" href="#">
+                      <div class="dropdown-list-image mr-3">
+                        <img class="rounded-circle" src="https://source.unsplash.com/Mv9hjnEUHR4/60x60" alt="">
+                        <div class="status-indicator bg-success"></div>
+                      </div>
+                      <div>
+                        <div class="text-truncate">Am I a good boy? The reason I ask is because someone told me that people say this to all dogs, even if they aren't good...</div>
+                        <div class="small text-gray-500">Chicken the Dog · 2w</div>
+                      </div>
+                    </a>
+                    <a class="dropdown-item text-center small text-gray-500" href="#">Read More Messages</a>
+                  </div>
+                </li>
+    
+                <div class="topbar-divider d-none d-sm-block"></div>
+    
+                <!-- Nav Item - User Information -->
+                <li class="nav-item dropdown no-arrow">
+                  <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="buttfcv  on" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ user.username }}</span>
+                    <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
+                  </a>
+                  <!-- Dropdown - User Information -->
+                  <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                    <a class="dropdown-item" href="#">
+                      <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                      Profile
+                    </a>
+                    <a class="dropdown-item" href="#">
+                      <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+                      Settings
+                    </a>
+                    <a class="dropdown-item" href="#">
+                      <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
+                      Activity Log
+                    </a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="{% url 'logout' %}" data-toggle="modal" data-target="#logoutModal">
+                      <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                      Logout
+                    </a>
+                  </div>
+                </li>
+    
+              </ul>
+    
+            </nav>
+            <!-- End of Topbar -->
+    
+            <!-- Begin Page Content -->
+            <div class="container-fluid">
+    
+              <!-- Page Heading -->
+              <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
+                <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
+              </div>
+    
+              <!-- Content Row -->
+              <div class="row">
+    
+                <!-- Earnings (Monthly) Card Example -->
+                <div class="col-xl-3 col-md-6 mb-4">
+                  <div class="card border-left-primary shadow h-100 py-2">
+                    <div class="card-body">
+                      <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                          <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Earnings (Monthly)</div>
+                          <div class="h5 mb-0 font-weight-bold text-gray-800">$40,000</div>
+                        </div>
+                        <div class="col-auto">
+                          <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+    
+                <!-- Earnings (Monthly) Card Example -->
+                <div class="col-xl-3 col-md-6 mb-4">
+                  <div class="card border-left-success shadow h-100 py-2">
+                    <div class="card-body">
+                      <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                          <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Earnings (Annual)</div>
+                          <div class="h5 mb-0 font-weight-bold text-gray-800">$215,000</div>
+                        </div>
+                        <div class="col-auto">
+                          <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+    
+                <!-- Earnings (Monthly) Card Example -->
+                <div class="col-xl-3 col-md-6 mb-4">
+                  <div class="card border-left-info shadow h-100 py-2">
+                    <div class="card-body">
+                      <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                          <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Tasks</div>
+                          <div class="row no-gutters align-items-center">
+                            <div class="col-auto">
+                              <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">50%</div>
+                            </div>
+                            <div class="col">
+                              <div class="progress progress-sm mr-2">
+                                <div class="progress-bar bg-info" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-auto">
+                          <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+    
+                <!-- Pending Requests Card Example -->
+                <div class="col-xl-3 col-md-6 mb-4">
+                  <div class="card border-left-warning shadow h-100 py-2">
+                    <div class="card-body">
+                      <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                          <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Pending Requests</div>
+                          <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
+                        </div>
+                        <div class="col-auto">
+                          <i class="fas fa-comments fa-2x text-gray-300"></i>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+    
+              <!-- Content Row -->
+    
+              <div class="row">
+    
+                <!-- Area Chart -->
+                <div class="col-xl-8 col-lg-7">
+                  <div class="card shadow mb-4">
+                    <!-- Card Header - Dropdown -->
+                    <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                      <h6 class="m-0 font-weight-bold text-primary">Earnings Overview</h6>
+                      <div class="dropdown no-arrow">
+                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
+                          <div class="dropdown-header">Dropdown Header:</div>
+                          <a class="dropdown-item" href="#">Action</a>
+                          <a class="dropdown-item" href="#">Another action</a>
+                          <div class="dropdown-divider"></div>
+                          <a class="dropdown-item" href="#">Something else here</a>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- Card Body -->
+                    <div class="card-body">
+                      <div class="chart-area">
+                        <canvas id="myAreaChart"></canvas>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+    
+                <!-- Pie Chart -->
+                <div class="col-xl-4 col-lg-5">
+                  <div class="card shadow mb-4">
+                    <!-- Card Header - Dropdown -->
+                    <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                      <h6 class="m-0 font-weight-bold text-primary">Revenue Sources</h6>
+                      <div class="dropdown no-arrow">
+                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
+                          <div class="dropdown-header">Dropdown Header:</div>
+                          <a class="dropdown-item" href="#">Action</a>
+                          <a class="dropdown-item" href="#">Another action</a>
+                          <div class="dropdown-divider"></div>
+                          <a class="dropdown-item" href="#">Something else here</a>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- Card Body -->
+                    <div class="card-body">
+                      <div class="chart-pie pt-4 pb-2">
+                        <canvas id="myPieChart"></canvas>
+                      </div>
+                      <div class="mt-4 text-center small">
+                        <span class="mr-2">
+                          <i class="fas fa-circle text-primary"></i> Direct
+                        </span>
+                        <span class="mr-2">
+                          <i class="fas fa-circle text-success"></i> Social
+                        </span>
+                        <span class="mr-2">
+                          <i class="fas fa-circle text-info"></i> Referral
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+    
+              <!-- Content Row -->
+              <div class="row">
+    
+                <!-- Content Column -->
+                <div class="col-lg-6 mb-4">
+    
+                  <!-- Project Card Example -->
+                  <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                      <h6 class="m-0 font-weight-bold text-primary">Projects</h6>
+                    </div>
+                    <div class="card-body">
+                      <h4 class="small font-weight-bold">Server Migration <span class="float-right">20%</span></h4>
+                      <div class="progress mb-4">
+                        <div class="progress-bar bg-danger" role="progressbar" style="width: 20%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+                      <h4 class="small font-weight-bold">Sales Tracking <span class="float-right">40%</span></h4>
+                      <div class="progress mb-4">
+                        <div class="progress-bar bg-warning" role="progressbar" style="width: 40%" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+                      <h4 class="small font-weight-bold">Customer Database <span class="float-right">60%</span></h4>
+                      <div class="progress mb-4">
+                        <div class="progress-bar" role="progressbar" style="width: 60%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+                      <h4 class="small font-weight-bold">Payout Details <span class="float-right">80%</span></h4>
+                      <div class="progress mb-4">
+                        <div class="progress-bar bg-info" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+                      <h4 class="small font-weight-bold">Account Setup <span class="float-right">Complete!</span></h4>
+                      <div class="progress">
+                        <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+                    </div>
+                  </div>
+    
+                  <!-- Color System -->
+                  <div class="row">
+                    <div class="col-lg-6 mb-4">
+                      <div class="card bg-primary text-white shadow">
+                        <div class="card-body">
+                          Primary
+                          <div class="text-white-50 small">#4e73df</div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-lg-6 mb-4">
+                      <div class="card bg-success text-white shadow">
+                        <div class="card-body">
+                          Success
+                          <div class="text-white-50 small">#1cc88a</div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-lg-6 mb-4">
+                      <div class="card bg-info text-white shadow">
+                        <div class="card-body">
+                          Info
+                          <div class="text-white-50 small">#36b9cc</div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-lg-6 mb-4">
+                      <div class="card bg-warning text-white shadow">
+                        <div class="card-body">
+                          Warning
+                          <div class="text-white-50 small">#f6c23e</div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-lg-6 mb-4">
+                      <div class="card bg-danger text-white shadow">
+                        <div class="card-body">
+                          Danger
+                          <div class="text-white-50 small">#e74a3b</div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-lg-6 mb-4">
+                      <div class="card bg-secondary text-white shadow">
+                        <div class="card-body">
+                          Secondary
+                          <div class="text-white-50 small">#858796</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+    
+                </div>
+    
+                <div class="col-lg-6 mb-4">
+    
+                  <!-- Illustrations -->
+                  <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                      <h6 class="m-0 font-weight-bold text-primary">Illustrations</h6>
+                    </div>
+                    <div class="card-body">
+                      <div class="text-center">
+                        <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;" src="{% static 'img/undraw_posting_photo.svg' %}" alt="">
+                      </div>
+                      <p>Add some quality, svg illustrations to your project courtesy of <a target="_blank" rel="nofollow" href="https://undraw.co/">unDraw</a>, a constantly updated collection of beautiful svg images that you can use completely free and without attribution!</p>
+                      <a target="_blank" rel="nofollow" href="https://undraw.co/">Browse Illustrations on unDraw &rarr;</a>
+                    </div>
+                  </div>
+    
+                  <!-- Approach -->
+                  <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                      <h6 class="m-0 font-weight-bold text-primary">Development Approach</h6>
+                    </div>
+                    <div class="card-body">
+                      <p>SB Admin 2 makes extensive use of Bootstrap 4 utility classes in order to reduce CSS bloat and poor page performance. Custom CSS classes are used to create custom components and custom utility classes.</p>
+                      <p class="mb-0">Before working with this theme, you should become familiar with the Bootstrap framework, especially the utility classes.</p>
+                    </div>
+                  </div>
+    
+                </div>
+              </div>
+    
+            </div>
+            <!-- /.container-fluid -->
+    
+          </div>
+          <!-- End of Main Content -->
+    
+          <!-- Footer -->
+          <footer class="sticky-footer bg-white">
+            <div class="container my-auto">
+              <div class="copyright text-center my-auto">
+                <span>Copyright &copy; Your Website 2019</span>
+              </div>
+            </div>
+          </footer>
+          <!-- End of Footer -->
+    
+        </div>
+        <!-- End of Content Wrapper -->
+    
+      </div>
+      <!-- End of Page Wrapper -->
+    
+      <!-- Scroll to Top Button-->
+      <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+      </a>
+    
+      <!-- Logout Modal-->
+      <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+              <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">×</span>
+              </button>
+            </div>
+            <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+            <div class="modal-footer">
+              <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+              <a class="btn btn-primary" href="{% url 'logout' %}">Logout</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+      <!-- Bootstrap core JavaScript-->
+      <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+      <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+    
+      <!-- Core plugin JavaScript-->
+      <script src="{% static 'vendor/jquery-easing/jquery.easing.min.js' %}"></script>
+    
+      <!-- Custom scripts for all pages-->
+      <script src="{% static 'js/sb-admin-2.min.js' %}"></script>
+    
+      <!-- Page level plugins -->
+      <script src="{% static 'vendor/chart.js/Chart.min.js' %}"></script>
+    
+      <!-- Page level custom scripts -->
+      <script src="{% static 'js/demo/chart-area-demo.js' %}"></script>
+      <script src="{% static 'js/demo/chart-pie-demo.js' %}"></script>
+    
+    </body>
+    
+    </html>
+    
+    {% else %} 
+    <!DOCTYPE html>
+    {% load static %}
+    <html lang="en">
+    
+    <head>
+        <meta charset="UTF-8">
+        <link rel="dns-prefetch" href="//fonts.googleapis.com/">
+        <link rel="dns-prefetch" href="//cdnjs.cloudflare.com/">
+        <link rel="preconnect" href="//fonts.googleapis.com/">
+        <link rel="preconnect" href="//cdnjs.cloudflare.com/">
+    
+        <title><img src="{% static './images/55.png' %}">Attendor</title>
+    
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="Description" content="Usetiful’s digital adoption plasgdsgsfgsgsrgsrgsrgswrgtform improves user retention with easy-to-use product tours, smart tooltips, and onboarding checklists.">
+        <meta property="og:title" content="Usetiful - Digital Adoption Platform" />
+        <meta property="og:type" content="website" />
+        <meta property="og:description" content="Usetiful’s digital adoption platform improves user retention with easy-to-use product tours, smart tooltips, and onboarding checklists." />
+        <meta property="og:url" content="https://www.usetiful.com/" />
+        <meta property="og:image" content="https://www.usetiful.com/build/images/web/og-image.png" />
+        <!-- Google Tag Manager -->
+        <script>
+            (function(w, d, s, l, i) {
+                w[l] = w[l] || [];
+                w[l].push({
+                    'gtm.start': new Date().getTime(),
+                    event: 'gtm.js',
+                });
+                var f = d.getElementsByTagName(s)[0],
+                    j = d.createElement(s),
+                    dl = l != 'dataLayer' ? '&l=' + l : '';
+                j.async = true;
+                j.src =
+                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+                f.parentNode.insertBefore(j, f);
+            })(window, document, 'script', 'dataLayer', 'GTM-5LL23DF');
+        </script>
+        <!-- End Google Tag Manager -->
+        <link rel="stylesheet" href="{% static './build/web.10ab951d.css' %}">
+        <link href="https://fonts.googleapis.com/css?family=Muli:400,600,800&display=swap" rel="stylesheet">
+        <link rel="shortcut icon" href="https://www.usetiful.com/favicon.ico">
+        <link rel="icon" type="image/png" href="https://www.usetiful.com/build/images/favicon.png" sizes="32x32">
+    
+        <link rel="shortcut icon" href="{% static './images/IO 2.ico' %}" type="image/x-icon">
+    
+        <link rel="stylesheet" href="{% static './fontawesome-free-5.15.4-web (1)/fontawesome-free-5.15.4-web/css/all.css' %}">
+    
+        <meta name="msapplication-TileImage" content="/mstile-144x144.png">
+        <meta name="msapplication-TileColor" content="#353F4B">
+        <script>
+            var _rollbarConfig = {
+                accessToken: "d15df421e4b24f31a018f9a306e067b0",
+                captureUncaught: true,
+                captureUnhandledRejections: true,
+                hostSafeList: ["www.usetiful.com"],
+                payload: {
+                    environment: "prod"
+                }
+            };
+            // Rollbar Snippet
+            ! function(r) {
+                var e = {};
+    
+                function o(n) {
+                    if (e[n]) return e[n].exports;
+                    var t = e[n] = {
+                        i: n,
+                        l: !1,
+                        exports: {}
+                    };
+                    return r[n].call(t.exports, t, t.exports, o), t.l = !0, t.exports
+                }
+                o.m = r, o.c = e, o.d = function(r, e, n) {
+                    o.o(r, e) || Object.defineProperty(r, e, {
+                        enumerable: !0,
+                        get: n
+                    })
+                }, o.r = function(r) {
+                    "undefined" != typeof Symbol && Symbol.toStringTag && Object.defineProperty(r, Symbol.toStringTag, {
+                        value: "Module"
+                    }), Object.defineProperty(r, "__esModule", {
+                        value: !0
+                    })
+                }, o.t = function(r, e) {
+                    if (1 & e && (r = o(r)), 8 & e) return r;
+                    if (4 & e && "object" == typeof r && r && r.__esModule) return r;
+                    var n = Object.create(null);
+                    if (o.r(n), Object.defineProperty(n, "default", {
+                            enumerable: !0,
+                            value: r
+                        }), 2 & e && "string" != typeof r)
+                        for (var t in r) o.d(n, t, function(e) {
+                            return r[e]
+                        }.bind(null, t));
+                    return n
+                }, o.n = function(r) {
+                    var e = r && r.__esModule ? function() {
+                        return r.default
+                    } : function() {
+                        return r
+                    };
+                    return o.d(e, "a", e), e
+                }, o.o = function(r, e) {
+                    return Object.prototype.hasOwnProperty.call(r, e)
+                }, o.p = "", o(o.s = 0)
+            }([function(r, e, o) {
+                "use strict";
+                var n = o(1),
+                    t = o(5);
+                _rollbarConfig = _rollbarConfig || {}, _rollbarConfig.rollbarJsUrl = _rollbarConfig.rollbarJsUrl || "https://cdn.rollbar.com/rollbarjs/refs/tags/v2.21.1/rollbar.min.js", _rollbarConfig.async = void 0 === _rollbarConfig.async || _rollbarConfig.async;
+                var a = n.setupShim(window, _rollbarConfig),
+                    l = t(_rollbarConfig);
+                window.rollbar = n.Rollbar, a.loadFull(window, document, !_rollbarConfig.async, _rollbarConfig, l)
+            }, function(r, e, o) {
+                "use strict";
+                var n = o(2),
+                    t = o(3);
+    
+                function a(r) {
+                    return function() {
+                        try {
+                            return r.apply(this, arguments)
+                        } catch (r) {
+                            try {
+                                console.error("[Rollbar]: Internal error", r)
+                            } catch (r) {}
+                        }
+                    }
+                }
+                var l = 0;
+    
+                function i(r, e) {
+                    this.options = r, this._rollbarOldOnError = null;
+                    var o = l++;
+                    this.shimId = function() {
+                        return o
+                    }, "undefined" != typeof window && window._rollbarShims && (window._rollbarShims[o] = {
+                        handler: e,
+                        messages: []
+                    })
+                }
+                var s = o(4),
+                    d = function(r, e) {
+                        return new i(r, e)
+                    },
+                    c = function(r) {
+                        return new s(d, r)
+                    };
+    
+                function u(r) {
+                    return a((function() {
+                        var e = this,
+                            o = Array.prototype.slice.call(arguments, 0),
+                            n = {
+                                shim: e,
+                                method: r,
+                                args: o,
+                                ts: new Date
+                            };
+                        window._rollbarShims[this.shimId()].messages.push(n)
+                    }))
+                }
+                i.prototype.loadFull = function(r, e, o, n, t) {
+                    var l = !1,
+                        i = e.createElement("script"),
+                        s = e.getElementsByTagName("script")[0],
+                        d = s.parentNode;
+                    i.crossOrigin = "", i.src = n.rollbarJsUrl, o || (i.async = !0), i.onload = i.onreadystatechange = a((function() {
+                        if (!(l || this.readyState && "loaded" !== this.readyState && "complete" !== this.readyState)) {
+                            i.onload = i.onreadystatechange = null;
+                            try {
+                                d.removeChild(i)
+                            } catch (r) {}
+                            l = !0,
+                                function() {
+                                    var e;
+                                    if (void 0 === r._rollbarDidLoad) {
+                                        e = new Error("rollbar.js did not load");
+                                        for (var o, n, a, l, i = 0; o = r._rollbarShims[i++];)
+                                            for (o = o.messages || []; n = o.shift();)
+                                                for (a = n.args || [], i = 0; i < a.length; ++i)
+                                                    if ("function" == typeof(l = a[i])) {
+                                                        l(e);
+                                                        break
+                                                    }
+                                    }
+                                    "function" == typeof t && t(e)
+                                }()
+                        }
+                    })), d.insertBefore(i, s)
+                }, i.prototype.wrap = function(r, e, o) {
+                    try {
+                        var n;
+                        if (n = "function" == typeof e ? e : function() {
+                                return e || {}
+                            }, "function" != typeof r) return r;
+                        if (r._isWrap) return r;
+                        if (!r._rollbar_wrapped && (r._rollbar_wrapped = function() {
+                                o && "function" == typeof o && o.apply(this, arguments);
+                                try {
+                                    return r.apply(this, arguments)
+                                } catch (o) {
+                                    var e = o;
+                                    throw e && ("string" == typeof e && (e = new String(e)), e._rollbarContext = n() || {}, e._rollbarContext._wrappedSource = r.toString(), window._rollbarWrappedError = e), e
+                                }
+                            }, r._rollbar_wrapped._isWrap = !0, r.hasOwnProperty))
+                            for (var t in r) r.hasOwnProperty(t) && (r._rollbar_wrapped[t] = r[t]);
+                        return r._rollbar_wrapped
+                    } catch (e) {
+                        return r
+                    }
+                };
+                for (var p = "log,debug,info,warn,warning,error,critical,global,configure,handleUncaughtException,handleAnonymousErrors,handleUnhandledRejection,captureEvent,captureDomContentLoaded,captureLoad".split(","), f = 0; f < p.length; ++f) i.prototype[p[f]] = u(p[f]);
+                r.exports = {
+                    setupShim: function(r, e) {
+                        if (r) {
+                            var o = e.globalAlias || "Rollbar";
+                            if ("object" == typeof r[o]) return r[o];
+                            r._rollbarShims = {}, r._rollbarWrappedError = null;
+                            var l = new c(e);
+                            return a((function() {
+                                e.captureUncaught && (l._rollbarOldOnError = r.onerror, n.captureUncaughtExceptions(r, l, !0), e.wrapGlobalEventHandlers && t(r, l, !0)), e.captureUnhandledRejections && n.captureUnhandledRejections(r, l, !0);
+                                var a = e.autoInstrument;
+                                return !1 !== e.enabled && (void 0 === a || !0 === a || "object" == typeof a && a.network) && r.addEventListener && (r.addEventListener("load", l.captureLoad.bind(l)), r.addEventListener("DOMContentLoaded", l.captureDomContentLoaded.bind(l))), r[o] = l, l
+                            }))()
+                        }
+                    },
+                    Rollbar: c
+                }
+            }, function(r, e, o) {
+                "use strict";
+    
+                function n(r, e, o, n) {
+                    r._rollbarWrappedError && (n[4] || (n[4] = r._rollbarWrappedError), n[5] || (n[5] = r._rollbarWrappedError._rollbarContext), r._rollbarWrappedError = null);
+                    var t = e.handleUncaughtException.apply(e, n);
+                    o && o.apply(r, n), "anonymous" === t && (e.anonymousErrorsPending += 1)
+                }
+                r.exports = {
+                    captureUncaughtExceptions: function(r, e, o) {
+                        if (r) {
+                            var t;
+                            if ("function" == typeof e._rollbarOldOnError) t = e._rollbarOldOnError;
+                            else if (r.onerror) {
+                                for (t = r.onerror; t._rollbarOldOnError;) t = t._rollbarOldOnError;
+                                e._rollbarOldOnError = t
+                            }
+                            e.handleAnonymousErrors();
+                            var a = function() {
+                                var o = Array.prototype.slice.call(arguments, 0);
+                                n(r, e, t, o)
+                            };
+                            o && (a._rollbarOldOnError = t), r.onerror = a
+                        }
+                    },
+                    captureUnhandledRejections: function(r, e, o) {
+                        if (r) {
+                            "function" == typeof r._rollbarURH && r._rollbarURH.belongsToShim && r.removeEventListener("unhandledrejection", r._rollbarURH);
+                            var n = function(r) {
+                                var o, n, t;
+                                try {
+                                    o = r.reason
+                                } catch (r) {
+                                    o = void 0
+                                }
+                                try {
+                                    n = r.promise
+                                } catch (r) {
+                                    n = "[unhandledrejection] error getting `promise` from event"
+                                }
+                                try {
+                                    t = r.detail, !o && t && (o = t.reason, n = t.promise)
+                                } catch (r) {}
+                                o || (o = "[unhandledrejection] error getting `reason` from event"), e && e.handleUnhandledRejection && e.handleUnhandledRejection(o, n)
+                            };
+                            n.belongsToShim = o, r._rollbarURH = n, r.addEventListener("unhandledrejection", n)
+                        }
+                    }
+                }
+            }, function(r, e, o) {
+                "use strict";
+    
+                function n(r, e, o) {
+                    if (e.hasOwnProperty && e.hasOwnProperty("addEventListener")) {
+                        for (var n = e.addEventListener; n._rollbarOldAdd && n.belongsToShim;) n = n._rollbarOldAdd;
+                        var t = function(e, o, t) {
+                            n.call(this, e, r.wrap(o), t)
+                        };
+                        t._rollbarOldAdd = n, t.belongsToShim = o, e.addEventListener = t;
+                        for (var a = e.removeEventListener; a._rollbarOldRemove && a.belongsToShim;) a = a._rollbarOldRemove;
+                        var l = function(r, e, o) {
+                            a.call(this, r, e && e._rollbar_wrapped || e, o)
+                        };
+                        l._rollbarOldRemove = a, l.belongsToShim = o, e.removeEventListener = l
+                    }
+                }
+                r.exports = function(r, e, o) {
+                    if (r) {
+                        var t, a, l = "EventTarget,Window,Node,ApplicationCache,AudioTrackList,ChannelMergerNode,CryptoOperation,EventSource,FileReader,HTMLUnknownElement,IDBDatabase,IDBRequest,IDBTransaction,KeyOperation,MediaController,MessagePort,ModalWindow,Notification,SVGElementInstance,Screen,TextTrack,TextTrackCue,TextTrackList,WebSocket,WebSocketWorker,Worker,XMLHttpRequest,XMLHttpRequestEventTarget,XMLHttpRequestUpload".split(",");
+                        for (t = 0; t < l.length; ++t) r[a = l[t]] && r[a].prototype && n(e, r[a].prototype, o)
+                    }
+                }
+            }, function(r, e, o) {
+                "use strict";
+    
+                function n(r, e) {
+                    this.impl = r(e, this), this.options = e,
+                        function(r) {
+                            for (var e = function(r) {
+                                    return function() {
+                                        var e = Array.prototype.slice.call(arguments, 0);
+                                        if (this.impl[r]) return this.impl[r].apply(this.impl, e)
+                                    }
+                                }, o = "log,debug,info,warn,warning,error,critical,global,configure,handleUncaughtException,handleAnonymousErrors,handleUnhandledRejection,_createItem,wrap,loadFull,shimId,captureEvent,captureDomContentLoaded,captureLoad".split(","), n = 0; n < o.length; n++) r[o[n]] = e(o[n])
+                        }(n.prototype)
+                }
+                n.prototype._swapAndProcessMessages = function(r, e) {
+                    var o, n, t;
+                    for (this.impl = r(this.options); o = e.shift();) n = o.method, t = o.args, this[n] && "function" == typeof this[n] && ("captureDomContentLoaded" === n || "captureLoad" === n ? this[n].apply(this, [t[0], o.ts]) : this[n].apply(this, t));
+                    return this
+                }, r.exports = n
+            }, function(r, e, o) {
+                "use strict";
+                r.exports = function(r) {
+                    return function(e) {
+                        if (!e && !window._rollbarInitialized) {
+                            for (var o, n, t = (r = r || {}).globalAlias || "Rollbar", a = window.rollbar, l = function(r) {
+                                    return new a(r)
+                                }, i = 0; o = window._rollbarShims[i++];) n || (n = o.handler), o.handler._swapAndProcessMessages(l, o.messages);
+                            window[t] = n, window._rollbarInitialized = !0
+                        }
+                    }
+                }
+            }]);
+            // End Rollbar Snippet
+        </script>
+    </head>
+    
+    <body class="new">
+        <!-- Google Tag Manager (noscript) -->
+        <noscript>
+        <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5LL23DF"
+                height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript>
+        <!-- End Google Tag Manager (noscript) -->
+            <div class="inner">
+    
+                <nav class="navbar navbar-expand-lg navbar-light mb-3 fixed-top px-3 px-md-5">
+                    <div class="container">
+                        <a href=""><div class="logo"><img src="{% static './images/ATTENDOR 2.png ' %}" alt="" class="attendor1"></div></a>
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navigation" aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon mb-1"></span>
+                    </button>
+                        <div class="collapse navbar-collapse navigation" id="navigation">
+                            <ul itemscope itemtype="https://schema.org/SiteNavigationElement" class="navbar-nav me-auto mb-0 mb-lg-1 ms-lg-4 mt-3 mt-lg-0">
+    
+                                <li itemprop="name" class="nav-item">
+                                    <a itemprop="url" class="nav-link nav-why" href="">Afzalliklar</a>
+                                </li>
+    
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link nav-product" id="productMenu" href="">Kontakt</a>
+                                    <div class="dropdown-menu dropdown-primary productSubmenu submenu" aria-labelledby="productMenu">
+                                        <div class="container px-0">
+                                            <div class="row border-bottom w-100 mx-0">
+                                                <a itemprop="url" href="" class="dropdown-item py-2 mb-2 px-3"><img src="{% static '/build/images/web/overview.svg' %}" alt="Product tour software" class="d-inline-block me-2"><h4 itemprop="name" class="d-inline-block p-0 mt-1 mb-1">Product overview</h4><small class="text-muted d-block ms-4 ps-2">All you need for successful digital adoption</small></a>
+                                            </div>
+                                            <div class="row w-100 mx-0">
+                                                <b class="text-muted mb-2 px-3 small mt-3 text-uppercase">Features</b>
+                                                <a itemprop="url" href="" class="dropdown-item py-2 px-3"><img src="{% static '/build/images/web/tours.svg' %}" alt="User onboarding" class="d-inline-block me-2"><h4 itemprop="name" class="d-inline-block p-0 mt-1 mb-1">Product tours</h4><small class="text-muted d-block ms-4 ps-2">Onboard your customers in an easy and fun way</small></a>
+                                                <a itemprop="url" href="" class="dropdown-item py-2 px-3"><img src="{% static '/build/images/web/checklist.svg' %}" alt="Onboarding checklist" class="d-inline-block me-2"><h4 itemprop="name" class="d-inline-block p-0 mt-1 mb-1">Onboarding checklist</h4><small class="text-muted d-block ms-4 ps-2">Complex onboarding made simple</small></a>
+                                                <a itemprop="url" href="" class="dropdown-item py-2 px-3"><img src="{% static '/build/images/web/smarttips.svg' %}" alt="Smart tips" class="d-inline-block me-2"><h4 itemprop="name" class="d-inline-block p-0 mt-1 mb-1">Smart tips</h4><small class="text-muted d-block ms-4 ps-2">Helpful tooltips anywhere needed</small></a>
+                                                <a itemprop="url" href="" class="dropdown-item py-2 px-3"><img src="{% static '/build/images/web/assistant.svg' %}" alt="Assistant" class="d-inline-block me-2"><h4 itemprop="name" class="d-inline-block p-0 mt-1 mb-1">Assistant</h4><span class="badge bg-secondary ms-2">Coming soon</span><small class="text-muted d-block ms-4 ps-2">24/7 support agent for your customers</small></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+    
+                                <li class="nav-item dropdown">
+                                    <!-- <a class="nav-link nav-product" id="solutionsMenu" href="">Ro'yxatdan o'tish</a> -->
+                                    <div class="dropdown-menu dropdown-primary solutionsMenu" aria-labelledby="solutionsMenu">
+                                        <div class="container px-0">
+                                            <div class="row w-100 mx-0">
+                                                <b class="text-muted mb-2 px-3 small mt-2 text-uppercase">Digital adoption solutions</b>
+                                                <div class="container px-0">
+                                                    <div class="row mx-0 p-0">
+                                                        <div class="col-12 col-md-6 px-0 my-2">
+                                                            <a itemprop="url" href="" class="dropdown-item py-2 px-3"><img src="{% static '/build/images/web/onboarding2.svg' %}" alt="User onboarding" class="d-inline-block me-2"><h4 itemprop="name" class="d-inline-block p-0 mt-1 mb-1">User onboarding</h4><small class="text-muted d-block ms-4 ps-2">Onboard new users to your product smoothly</small></a>
+                                                            <a itemprop="url" href="" class="dropdown-item py-2 px-3"><img src="{% static '/build/images/web/self-service.svg' %}" alt="Customer self service" class="d-inline-block me-2"><h4 itemprop="name" class="d-inline-block p-0 mt-1 mb-1">Customer self-service</h4><small class="text-muted d-block ms-4 ps-2">Provide instant user assistance</small></a>
+                                                            <a itemprop="url" href="" class="dropdown-item py-2 px-3"><img src="{% static '/build/images/web/product-adoption.svg' %}" alt="Feature adoption" class="d-inline-block me-2"><h4 itemprop="name" class="d-inline-block p-0 mt-1 mb-1">Feature adoption</h4><small class="text-muted d-block ms-4 ps-2">Drive feature rollouts and adoption</small></a>
+                                                        </div>
+                                                        <div class="col-12 col-md-6 px-0 my-2">
+                                                            <a itemprop="url" href="" class="dropdown-item py-2 px-3"><img src="{% static '/build/images/web/onboarding.svg' %}" alt="User engagement" class="d-inline-block me-2"><h4 itemprop="name" class="d-inline-block p-0 mt-1 mb-1">User engagement</h4><small class="text-muted d-block ms-4 ps-2">Understand customers and improve the relationship with them</small></a>
+                                                            <a itemprop="url" href="" class="dropdown-item py-2 px-3"><img src="{% static '/build/images/web/product-training.svg' %}" alt="Product training" class="d-inline-block me-2"><h4 itemprop="name" class="d-inline-block p-0 mt-1 mb-1">Product training</h4><small class="text-muted d-block ms-4 ps-2">Give customers a training remotely</small></a>
+                                                            <a itemprop="url" href="" class="dropdown-item py-2 px-3"><img src="{% static '/build/images/web/consent.svg' %}" alt="Product training" class="d-inline-block me-2"><h4 itemprop="name" class="d-inline-block p-0 mt-1 mb-1">Consent management</h4><div class="ms-4"><span class="badge bg-secondary ms-2 mb-1">Coming soon</span></div><small class="text-muted d-block ms-4 ps-2">Get and maintain consent from your users</small></a>
+    
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                </li>
+    
+                                <li itemprop="name" class="nav-item">
+                                    <!-- <a itemprop="url" class="nav-link pricing_link nav-pricing" href="">Pricing</a> -->
+                                </li>
+    
+                                <!-- Dropdown -->
+                                <li class="nav-item dropdown">
+                                    <!-- <a class="nav-link" href="" id="resourcesMenu">Resources</a> -->
+                                    <div class="dropdown-menu dropdown-primary" aria-labelledby="resourcesMenu">
+                                        <a itemprop="url" href="" class="dropdown-item py-2" target="_blank"><img src="{% static '/build/images/web/blog.svg' %}" alt="Blog" class="float-start me-2"><span itemprop="name">Blog</span></a>
+                                        <a itemprop="url" href="" class="dropdown-item py-2 text-nowrap" target="_blank"><img src="{% static '/build/images/web/guidance.svg' %}" alt="Guidance" class="float-start me-2"><span itemprop="name">Help Center</span></a>
+                                    </div>
+                                </li>
+    
+                            </ul>
+                            <ul class="navbar-nav form-inline">
+                                <li class="nav-item ps-3">
+    
+                                    <a href="{% url 'signup' %}" class="btn btn-primary getting_started_link btn-block btn-md-inline my-2 my-lg-0">Bepul boshlash</a> </li>
+                                <li class="nav-item ps-3">
+                                    <a class="btn btn-outline-secondary signin_link btn-block btn-md-inline my-2 ps-3 my-lg-0" href="{% url 'login' %}"><i class="fas fa-user"></i>Tizimga kirish</a>
+                                </li>
+                            </ul>
+                            </div>
+                        </div>
+                </nav>
+    
+                </div>
+            <div class="wrapper lightblue top pb-0">
+                <div class="inner">
+    
+                    <div class="container-fluid mt-3 mb-0">
+                        <div class="row align-items-center">
+                            <div class="col-12 col-md-6 px-4 pb-md-2">
+                                <h1 class="hero-1 mt-2 mt-md-5"><h1 class="hero-1 mt-2 mt-md-5"><h1 class="hero-1 mt-2 mt-md-5"></h1></h1>HRM tizimi bu sizning kompaniyangizning ichki muhitini va o'ziga hosligini nazorat qiluvchi tizim.</h1>
+                                <p class="description w-75">Bizning tizim orqali esa yangi cho'qqilarga erishasiz.</p>
+                                <p>
+    
+                                    <a href="" class="btn btn-lg btn-primary mx-1" id="freeButton">Tekin versiyani sinab ko'rish</a> <button class="btn btn-lg btn-outline-secondary demo_link mx-1" id="demoButton"><img src="{% static './build/images/web/tour.svg' %}" alt="Try out demo product tour">Demo variantni ishlatib ko'rish</button>
+                                    <!-- <p class="my-0 py-0"><a href="https://us20.list-manage.com/survey?u=2fd2318f3e2f54e283b30324d&id=2c2e06c0bf&attribution=false" target="_blank">Or schedule demo with a product expert →</a></p> -->
+                                    <noscript><span class="mt-2 d-block text-danger">Enable javascript to see our interactive demo!</span></noscript>
+                                </p>
+                            </div>
+                            <div class="col-12 col-md-6 py-0 text-center">
+                                <img src="{% static './images/HR JAMOA.jpg' %}" alt="">
+                                <!-- <img src="" class="mx-auto" alt="Usetiful - Digital adoption platform" title="Usetiful - Digital adoption platform"> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <div class="wrapper py-5">
+            <h2><b class="d-block">Attendor - Kompaniyasida tartib o'rnatishni hoxlovchilar uchun </b></h2>
+            <div class="container">
+                <div class="row row-cols-2 row-cols-md-6">
+    
+    
+    
+                    <div class="col"><img src="{% static './build/images/web/customers/customer1-min.png' %}" class="mx-auto p-2" alt="Usetiful customer" title="Usetiful customer"></div>
+                    <div class="col"><img src="{% static './build/images/web/customers/customer5-min.png' %}" class="mx-auto p-2" alt="Usetiful customer" title="Usetiful customer"></div>
+                    <div class="col"><img src="{% static './build/images/web/customers/customer2-min.png' %}" class="mx-auto p-2" alt="Usetiful customer" title="Usetiful customer"></div>
+                    <div class="col"><img src="{% static './build/images/web/customers/customer6-min.png' %}" class="mx-auto p-2" alt="Usetiful customer" title="Usetiful customer"></div>
+                    <div class="col"><img src="{% static './build/images/web/customers/customer7-min.png' %}" class="mx-auto p-2" alt="Usetiful customer" title="Usetiful customer"></div>
+                    <div class="col"><img src="{% static './build/images/web/customers/customer11-min.png' %}" class="mx-auto p-2" alt="Usetiful customer" title="Usetiful customer"></div>
+                </div>
+            </div>
+        </div>
+        <div class="wrapper pb-5 pt-0" id="solutions">
+            <div class="container">
+                <div class="row text-center align-items-center">
+                    <div class="col-12 col-md-7">
+                        <div class="screen-wrapper">
+                            <img src="{% static './images/hrm_tizimi_ishi.jpg' %}" class="mx-auto image-behind" alt="Usetiful - Digital adoption platform" title="Usetiful - Digital adoption platform">
+                            <div class="play-overlay" data-bs-target="#videoModal" data-bs-toggle="modal"><button class="border-0 button" aria-label="Click to play video"></button></div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-5 text-start">
+                        <h2 class="mt-4 mb-2 fw-bold">Shuningdek bizning dastur orqali siz hodimlaringizning samaradorligini doimiy ravishda nazorat qilishingiz mumkin</h2>
+                        <p class="mx-auto"><strong>Hozirgi kunda biz hizmatlarimizni yanada kengaytirib bormoqdamiz</p>
+                        <a href="" class="mt-3 d-block learn-more">Mahsulot haqida ko'proq malumot olish →</a>
+                    </div>
+                </div>
+            </div>
+    
+        </div>
+    
+        <div class="modal fade" id="videoModal" tabindex="-1" role="dialog" aria-labelledby="videoModal" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content bg-transparent border-0">
+                    <div class="modal-header border-0 py-0">
+                        <button type="button" class="btn-close btn-close-white h3" data-bs-dismiss="modal" aria-hidden="true"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="js-video-iframe ratio ratio-16x9" data-video-source="https://www.youtube.com/embed/PnG7BDI3PnU?rel=0&autoplay=1&mute=1">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="wrapper darkblue" id="solutions">
+            <div class="container">
+                <div class="tab-content benefits benefits-block mt-3" id="benefits">
+                    <div id="pills-onboarding">
+                        <div class="row align-items-center pt-5 pb-5">
+                            <div class="col-12 col-md-6 text-center">
+                                <div class="imageWrapper web1">
+                                    <img src="{% static './images/HR_NIMA.jpg' %}" width="550" data-id="web1" alt="User onboarding - Improve user interaction with your solutions!">
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6 text-start">
+                                <h4 class="d-inline" style="color:#2C66D4">Hodimlar bazasi </h4>
+                                <h2 class="mt-3 mb-1">Yangi hodimlarni biz bilan topishingiz mumkin</h2>
+                                <p class="opacity-80"><strong>Mahsulot haqida</strong> Bizning raqamli mahsulot orqali jamoangizga eng yaxshi hodimlarni jalb qilishingiz mumkin.
+                                </p>
+                                <a href="" class="learn-more mx-auto">Ko'proq o'rganish →</a>
+                            </div>
+                        </div>
+                    </div>
+                    <hr class="d-block d-md-none border border-dark" />
+                    <div id="pills-employee-adoption">
+                        <div class="row align-items-center py-5">
+                            <div class="col-12 col-md-6 text-center">
+                                <div class="imageWrapper web2"><img src="{% static './images/hr_samaradorlik.jpg' %}" width="550" data-id="web2" alt="User self-service - Provide easily a contextual help">
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6 text-start order-md-first">
+                                <h4 class="d-inline" style="color:#B27A28">Hodimlarga hizmat ko'rsatish</h4>
+                                <h2 class="mt-3 mb-1">Hodimlaringiz motivatsiyasini nazorat qilish</h2>
+                                <p class="opacity-80">Hodimlaringiz samaradorligini nazorat qilish uchun ularga to'g'ri KPI tizimlarini o'rnatish
+                                    <strong>Qaydlar oynasi va yordam tizimi</strong> Hodimlaringizni yanada rivojlanishi uchun ularga ko'mak berasiz</p>
+                                <a href="" class="learn-more mx-auto">Ko'proq malumot olish  →</a>
+                            </div>
+                        </div>
+                    </div>
+                    <hr class="d-block d-md-none border border-dark" />
+                    <div id="pills-digital-transformation">
+    
+                        <div class="row align-items-center py-5 mb-5">
+                            <div class="col-12 col-md-6 text-center">
+                                <div class="imageWrapper web3"><img src="{% static "./images/To'g'ri qaror.png" %}" width="550" data-id="web3" alt="Feature adoption - Boost adoption of new features" class="mb-5">
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6 text-start">
+                                <h4 class="d-inline" style="color:#B64E73">Istedodlarni nazorat qiling</h4>
+                                <h2 class="mt-3 mb-1">Hodimlaringizning yashirin istedodini kashf qiling</h2>
+                                <p class="opacity-80">Hodimlaringizga istedodlarini ko'rsatish uchun imkon bering <strong>mahsulot va hizmat sifatini oshiring </strong>Hodimlaringiz qiziqishini o'rganing va ularga o'ziga mos ish bering</p>
+                                <a href="" class="learn-more mx-auto">Ko'proq o'rganish →</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <div class="wrapper ">
+            <div class="container">
+                <h2 class="headline mt-5 mb-5 pb-3 text-center">Mijozlarning biz haqimizdagi fikrlari</h2>
+    
+                <div class="card-deck mx-auto mb-3 text-start" style="max-width: 1300px">
+                    <div class="card border-0 mb-5">
+                        <div class="card-body p-0">
+                            <div class="container p-0">
+                                <div class="row align-items-center mx-auto">
+                                    <div class="col-12 col-md-6 pt-2 px-4">
+                                        <h2 class="mt-3 mb-3 fw-bold">Book An Artist elevates user onboarding with product tours by Usetiful</h2>
+                                        <p>Book An Artist is an innovative online marketplace platform that connects artists with clients. It focuses on creatives specialized in many forms of art - custom murals, graffiti and street art, canvas paintings, also
+                                            illustration and many more. <a href="" class="mt-3 d-block" target="_blank">Read the story →</a></p>
+                                    </div>
+                                    <div class="col-12 col-md-6 px-0">
+                                        <img style='width:400px;' src="{% static './images/hrm1.jpg' %}" alt="Customer Story - Book An Artist" class="rounded">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 mb-3 px-3 pt-5 text-center mt-5">
+                    <div class="col mt-5">
+                        <div class="card h-100 shadow-sm">
+                            <div class="card-body">
+                                <blockquote class="blockquote d-flex flex-column py-0 h-100 text-start">
+                                    <p class="quotation-mark">“</p>
+                                    <p class="pt-0"> “Really good tool, well designed and has lots of features.”
+                                    </p>
+                                    <footer class="blockquote-footer text-end mt-auto"> <b class="d-block text-black">Dan Krijgsman</b><span class="text-muted">Director & Co-founder at Real Links</span>
+                                    </footer>
+                                </blockquote>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col mt-5">
+                        <div class="card h-100 shadow-sm">
+                            <div class="card-body">
+                                <blockquote class="blockquote d-flex flex-column py-0 h-100 text-start">
+                                    <p class="quotation-mark">“</p>
+                                    <p class="pt-0"> “Startup-friendly pricing, easy to use with great UX and responsive customer support.”
+                                    </p>
+                                    <footer class="blockquote-footer text-end mt-auto"> <b class="d-block text-black">Mathias</b><span class="text-muted">Founder at Img.vision</span>
+                                    </footer>
+                                </blockquote>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col mt-5">
+                        <div class="card h-100 shadow-sm">
+                            <div class="card-body">
+                                <blockquote class="blockquote d-flex flex-column py-0 h-100 text-start">
+                                    <p class="quotation-mark">“</p>
+                                    <p class="pt-0"> “We explored product tools online and found Usetiful had the easiest setup. The product tour is easy to navigate for non-tech users and tour analytics help analyze the users”
+                                    </p>
+                                    <footer class="blockquote-footer text-end mt-auto"> <b class="d-block text-black">Aditya Kumar</b><span class="text-muted">Technology Lead at Book An Artist</span>
+                                    </footer>
+                                </blockquote>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="container mt-5 mb-5">
+                <a href="" class="learn-more mx-auto">Ko'proq mijozlar fikri →</a>
+            </div>
+    
+        </div>
+    
+        <div class="wrapper lightblue">
+            <!-- <div class="container">
+                <h2 class="headline mt-5 mb-5 text-center">Qo'shimcha hizmatlar</h2>
+                <div class="row">
+    
+                    <div class="col-12 col-md-4 px-4">
+                        <article class="text-start">
+                            <a href="" target="_blank">
+                    <img class="mb-2 rounded" src="https://blogger.googleusercontent.com/img/a/AVvXsEj_NrRKyITzbZrfNzveeQrPqDIUcopcNWOxz_4V_FRKrK_4vHCMx0ICZ-D5U6R7B8bW24cYaFgIOo8wiVo2WrcRoHSPY1iiZ7PRLGW_cUVSoTz_ZFrfOfKnVC0G6BkpbFrZSc6mvBNTn4MhHd7XSK2XAxKxwGIoBuhQnCGRuqS0GBkCy5MQljz84r3u=w640-h360" alt="Three Pillars of Healthy Growth" width="400">
+                    <h3 class="h5 fw-bold mt-2 my-4 my-md-4">Three Pillars of Healthy Growth</h3>
+                    </a>
+                        </article>
+                    </div> -->
+    
+                    <!-- <div class="col-12 col-md-4 px-4">
+                        <article class="text-start">
+                            <a href="" target="_blank">
+                    <img class="mb-2 rounded" src="https://1.bp.blogspot.com/-iQ51eq_odPo/YTebL5N0LbI/AAAAAAAAABU/c1v5rRr8Mz8PD8_hYCPNQiZsk8HHETT_ACLcBGAsYHQ/w640-h426/alex-knight-2EJCSULRwC8-unsplash.jpg" alt="Digital Adoption: How to Implement a Successful Digital Adoption Strategy" width="400">
+                    <h3 class="h5 fw-bold mt-2 my-4 my-md-4">Digital Adoption: How to Implement a Successful Digital Adoption Strategy</h3>
+                    </a>
+                        </article>
+                    </div> -->
+    
+                    <!-- <div class="col-12 col-md-4 px-4">
+                        <article class="text-start">
+                            <a href="" target="_blank">
+                    <img class="mb-2 rounded" src="https://1.bp.blogspot.com/-kuUlTUqyLLE/YTcsvBhd9PI/AAAAAAAAABE/ROMgVmk7LV0oFzeeJ_NFUg4gxYWmvVJpQCLcBGAsYHQ/w640-h414/ralph-mayhew-CyrwKSWG_aE-unsplash.jpg" alt="Product Tours - Everything You Need To Know About Software Product Walkthroughs" width="400">
+                    <h3 class="h5 fw-bold mt-2 my-4 my-md-4">5 ways to reduce user churn</h3>
+                    </a>
+                        </article>
+                    </div> -->
+    
+                <!-- </div>
+    
+                <div class="row mt-5 mb-4">
+                    <a href="" target="_blank" class="learn-more mx-auto">More articles →</a>
+                </div>
+    
+            </div>
+        </div>
+    
+        <div class="wrapper">
+            <div class="container text-center">
+    
+                <h2 class="mt-5 mb-2">Ready to improve your <strong>digital adoption</strong> today?</h2>
+                <p class="text-center">Try Usetiful Plus free for 14 days.</p>
+    
+                <a href="" class="btn btn-lg btn-primary try_for_free_link" id="getStartedArea">Bepul boshlash</a>
+                <p class="my-0 text-center"><a href="" target="_blank">Or schedule demo with a product expert →</a></p>
+    
+            </div>
+        </div> -->
+    
+        <div class="wrapper border-top">
+            <div class="container mt-3">
+    
+                <div class="row align-items-center mb-3">
+                    <div class="col-12 col-md-4 text-start">
+                        <div class="row">
+                            <div class="col-auto">
+                                <img src="{% static './images/HRMperson.jpg' %}" width="64" alt="GDPR by default">
+                            </div>
+                            <div class="col">
+                                <b>GDPR sukut boʻyicha</b> – GDPR qoʻllanilishi uchun qoʻshimcha DPA yoki kelishuvlar talab qilinmaydi.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-4 text-start">
+                        <div class="row">
+                            <div class="col-auto">
+                                <img src="{% static './images/HRMperson.jpg' %}" width="64" alt="Data in EU">
+                            </div>
+                            <div class="col">
+                                <b>Evropadagi ma'lumotlar</b> - oxirgi foydalanuvchilar haqidagi barcha ma'lumotlar Evropa Ittifoqi hududida saqlanadi va qayta ishlanadi.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-4 text-start">
+                        <div class="row">
+                            <div class="col-auto">
+                                <img src="{% static './images/HRMperson.jpg' %}" width="64" alt="Data in EU">
+                            </div>
+                            <div class="col">
+                                <b>Nolinchi bilim dizayni </b>- Foydali faqat siz foydalanadigan xususiyatlar uchun zarur bo'lgan ma'lumotlarni to'playdi.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row text-center mb-2">
+                    <div class="col-12">
+                        <a href="">Find out more</a>
+                    </div>
+                </div>
+    
+            </div>
+        </div>
+    
+        <script type="application/ld+json">
+            {
+                "@context": "http://schema.org",
+                "@type": "Organization",
+                "name": "Dobbytec OÜ",
+                "url": "https://www.usetiful.com",
+                "address": "",
+                "sameAs": ["https://www.facebook.com/usetiful/", "https://www.linkedin.com/company/usetiful/"]
+            }
+        </script>
+        <div class="wrapper footer darkblue text-light py-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 col-md-3 text-start">
+                        <h4>Product</h4>
+                        <ul>
+                            <li><a href="">Product overview</a></li>
+                            <li><a href="">Product tours</a></li>
+                            <li><a href="">Onboarding checklist</a></li>
+                            <li><a href="">Smart tips</a></li>
+                            <li><a href="">Free plan</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-12 col-md-3 text-start">
+                        <h4>Digital adoption solutions</h4>
+                        <ul>
+                            <li><a href="">Solutions overview</a></li>
+                            <li><a href="">User onboarding</a></li>
+                            <li><a href="">Customer self-service</a></li>
+                            <li><a href="">Feature adoption</a></li>
+                            <li><a href="">User engagement</a></li>
+                            <li><a href="">Product training</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-12 col-md-3 text-start">
+                        <h4>Resources</h4>
+                        <ul>
+                            <li><a href="" target="_blank">Blog</a></li>
+                            <li><a href="" target="_blank">Help Center</a></li>
+    
+                            <li><a href="">Privacy Policy</a></li>
+                            <li><a href="">Terms and Conditions</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-12 col-md-3 text-start">
+                        <h4>Company</h4>
+                        <ul>
+                            <li><a href="">About us</a></li>
+                            <li><a href="">GDPR</a></li>
+                            <li><a href="">Affiliate program</a></li>
+                            <li><a href="">Careers</a></li>
+                            <li>Write review on <a href="" target="_blank">G2</a> | <a href="" target="_blank">Capterra</a></li>
+    
+                        </ul>
+                    </div>
+                </div>
+                <div class="row mt-4 text-center border-top border-dark pt-4">
+                    <div class="col-12 col-md-4">
+                    </div>
+                    <div class="col-12 col-md-4 text-center">
+                        &copy;2022 Usetiful by <a href="" target="_blank" class="ms-0">Dobbytec.</a><br> Made with ❤️ in Europe.
+                    </div>
+                    <div class="col-12 col-md-4 text-center text-md-end my-2">
+                        <a href="" target="_blank"><img src="{% static './images/facebook.png' %}" alt="Facebook" width="32" class="me-3"></a> <a href="" target="_blank"><img src="{% static './images/linkedIn.png' %}" alt="LinkedIn" width="32" class="me-3"></a>                    <a href="" target="_blank"><img src="{% static './images/twitter.png' %}" alt="Twitter" width="32" class="me-3"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="{% static '/build/runtime.686d9699.js' %}"></script>
+        <script src="{% static '/build/117.6837a493.js' %}"></script>
+        <script src="{% static '/build/468.642adbaa.js' %}"></script>
+        <script src="{% static '/build/web.3a17d896.js' %}"></script>
+    
+    </body>
+    
+    </html>
+    {% endif %}
+{% endblock content %}

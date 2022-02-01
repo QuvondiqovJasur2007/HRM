@@ -1,0 +1,926 @@
+.uf-button {
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    background: #FFFFFF;
+    color: #000000;
+    padding: 8px 13px;
+    margin-right: 8px;
+    margin-top: 8px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-family: inherit;
+    line-height: 21px
+}
+
+.uf-button:hover {
+    border: 1px solid rgba(0, 0, 0, 0.4)
+}
+
+.uf-button-primary {
+    background: #ff9838;
+    border-color: #ff9838;
+    color: #fff
+}
+
+.uf-button-primary:hover {
+    background: #2859B7;
+    border-color: #2859B7
+}
+
+.uf-button-main {
+    display: none;
+    padding: 8px 21px;
+    background: #ff9838;
+    color: #fff;
+    position: fixed;
+    z-index: 2147483646;
+    bottom: 20px;
+    right: 20px;
+    font-size: calc(14px * 1.2);
+    font-family: inherit;
+    border-radius: 24px;
+    border: 0;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.15);
+    cursor: pointer;
+    text-decoration: none;
+    opacity: 0;
+    animation: fade-out 250ms
+}
+
+.uf-button-main--left {
+    right: auto;
+    left: 20px !important
+}
+
+.uf-button-main.uf-button-selection .uf-icon {
+    display: inline-block
+}
+
+.uf-button-main.uf-button-selection .uf-icon svg {
+    width: 24px;
+    fill: white
+}
+
+.uf-button-main .uf-badge {
+    background: #000;
+    color: #fff;
+    padding: 2px 8px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    vertical-align: middle;
+    margin-left: 5px;
+    font-weight: bold;
+    position: absolute;
+    top: -2px
+}
+
+.uf-button-main:hover {
+    background: #2859B7;
+    color: #fff;
+    text-decoration: none
+}
+
+.uf-modal {
+    width: 99%;
+    position: absolute;
+    top: 40px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    border-radius: 6px;
+    display: none;
+    line-height: 21px
+}
+
+.uf-modal-inner {
+    color: #000000;
+    text-align: right;
+    z-index: 2147483647;
+    border: 0;
+    width: 80% !important;
+    max-width: 600px;
+    margin: auto;
+    position: relative;
+    top: 0;
+    background: #FFFFFF;
+    border-radius: 6px;
+    opacity: 0;
+    animation: fade-out 250ms
+}
+
+.uf-modal p {
+    padding: 0;
+    margin: 0
+}
+
+.uf-modal.uf-visible {
+    animation: none
+}
+
+.uf-modal.uf-visible .uf-modal-inner {
+    opacity: 1;
+    animation: fade-in 250ms
+}
+
+.uf-modal .uf-title {
+    text-align: left;
+    margin: 0;
+    font-size: 18px;
+    font-weight: 600;
+    color: #000000;
+    font-family: inherit;
+    padding: 13px 21px
+}
+
+.uf-modal .uf-close-button {
+    float: right;
+    top: 2px
+}
+
+.uf-modal::before {
+    content: "";
+    top: 0;
+    left: 0;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: 2147483646;
+    background: #000;
+    opacity: 0.6
+}
+
+.uf-close-button {
+    z-index: 20;
+    color: #000000;
+    font-size: 20px;
+    background: none;
+    border: 0;
+    position: relative;
+    cursor: pointer;
+    height: 40px;
+    width: 40px;
+    opacity: 0.5;
+    margin-right: 5px
+}
+
+.uf-close-button svg {
+    width: 20px;
+    height: 20px;
+    fill: #000000;
+    vertical-align: middle
+}
+
+.uf-close-button svg line {
+    stroke: #000000
+}
+
+.uf-actions {
+    text-align: left;
+    margin: 0;
+    padding: 0 21px 13px 21px;
+    border-radius: 0 0 6px 6px;
+    float: none
+}
+
+.uf-actions.center {
+    text-align: center
+}
+
+.uf-actions.center .uf-button {
+    margin-right: 4px;
+    margin-left: 4px
+}
+
+.uf-actions a {
+    display: inline-block
+}
+
+.uf-actions .uf-btn-block {
+    display: inline-block;
+    position: relative;
+    z-index: 100;
+    width: 100%;
+    text-align: left;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    border: 0;
+    padding: 13px 8px;
+    box-shadow: rgba(45, 62, 80, 0.12) 0px 1px 5px 0px;
+    border: 1px solid rgba(0, 0, 0, 0.2)
+}
+
+.uf-actions .uf-btn-block:first-child {
+    margin-top: -30px
+}
+
+.uf-actions .uf-btn-block div {
+    display: inline-block
+}
+
+.uf-actions .uf-btn-block .svg-icon {
+    fill: #ff9838;
+    margin-right: 8px;
+    vertical-align: bottom
+}
+
+.uf-actions .uf-btn-block.uf-done {
+    color: rgba(0, 0, 0, 0.6)
+}
+
+.uf-actions .uf-btn-block.uf-done .svg-icon {
+    fill: #40C570
+}
+
+.uf-actions .uf-btn-block:hover {
+    text-decoration: none;
+    color: #000000;
+    border: 1px solid rgba(0, 0, 0, 0.4)
+}
+
+.uf-actions .svg-icon {
+    width: 24px;
+    height: 24px;
+    vertical-align: text-bottom
+}
+
+.uf-actions.right {
+    text-align: right;
+    float: none
+}
+
+.uf-actions.right .uf-button {
+    margin-right: 0;
+    margin-left: 8px
+}
+
+.uf-slideout,
+.uf-notification {
+    position: fixed;
+    display: none;
+    opacity: 0;
+    padding: 21px;
+    bottom: 0;
+    right: 0;
+    z-index: 2147483647;
+    animation: fade-out 250ms;
+    line-height: 21px
+}
+
+.uf-slideout.right,
+.uf-notification.right {
+    left: auto;
+    right: 0;
+    float: none
+}
+
+.uf-slideout.left,
+.uf-notification.left {
+    right: auto;
+    left: 0;
+    float: none
+}
+
+.uf-slideout p,
+.uf-notification p {
+    padding: 0;
+    margin: 0;
+    font-size: 14px;
+    font-family: inherit;
+    color: #000000
+}
+
+.uf-slideout.uf-alert .uf-title,
+.uf-notification.uf-alert .uf-title {
+    color: darkorange
+}
+
+.uf-slideout .uf-title,
+.uf-notification .uf-title {
+    text-align: left;
+    margin: 0;
+    font-size: 18px;
+    font-weight: 600;
+    font-family: inherit;
+    color: #000000;
+    padding: 13px 21px;
+    border-radius: 6px 6px 0 0
+}
+
+.uf-slideout .uf-close-button,
+.uf-notification .uf-close-button {
+    float: right;
+    top: 2px
+}
+
+.uf-slideout .uf-content,
+.uf-notification .uf-content {
+    overflow-y: auto;
+    color: #000000;
+    font-size: inherit;
+    width: 100%
+}
+
+.uf-slideout.uf-tour-selection .uf-notification-inner,
+.uf-notification.uf-tour-selection .uf-notification-inner {
+    border-radius: 6px;
+    border: 0
+}
+
+.uf-slideout.uf-tour-selection .uf-title,
+.uf-notification.uf-tour-selection .uf-title {
+    padding: 13px 21px;
+    font-size: 18px
+}
+
+.uf-slideout.uf-tour-selection .uf-title--without-progress,
+.uf-notification.uf-tour-selection .uf-title--without-progress {
+    padding-bottom: 28px
+}
+
+.uf-slideout.uf-tour-selection .uf-title,
+.uf-slideout.uf-tour-selection .uf-content,
+.uf-notification.uf-tour-selection .uf-title,
+.uf-notification.uf-tour-selection .uf-content {
+    background: #ff9838;
+    color: white
+}
+
+.uf-slideout.uf-tour-selection .uf-content,
+.uf-notification.uf-tour-selection .uf-content {
+    padding: 8px 21px;
+    display: flex;
+    box-sizing: border-box
+}
+
+.uf-slideout.uf-tour-selection .uf-content .uf-progress-value,
+.uf-notification.uf-tour-selection .uf-content .uf-progress-value {
+    color: white;
+    margin-right: 10px;
+    white-space: nowrap
+}
+
+.uf-slideout.uf-tour-selection .uf-progress,
+.uf-notification.uf-tour-selection .uf-progress {
+    margin: 5px auto 40px auto;
+    border-radius: 10px;
+    height: 8px;
+    background-color: rgba(255, 255, 255, 0.2)
+}
+
+.uf-slideout.uf-tour-selection .uf-progress .uf-progress-bar,
+.uf-notification.uf-tour-selection .uf-progress .uf-progress-bar {
+    background-color: #40C570
+}
+
+.uf-slideout.uf-tour-selection .uf-actions,
+.uf-notification.uf-tour-selection .uf-actions {
+    background-color: rgba(0, 0, 0, 0.05);
+    padding-bottom: 13px
+}
+
+.uf-slideout.uf-tour-selection .uf-actions .uf-button,
+.uf-notification.uf-tour-selection .uf-actions .uf-button {
+    box-sizing: border-box
+}
+
+.uf-notification.confirmation .uf-close-button svg {
+    fill: #000000
+}
+
+.uf-notification.confirmation .uf-close-button svg line {
+    stroke: #000000
+}
+
+.uf-slideout-inner,
+.uf-notification-inner {
+    position: relative;
+    background: #FFFFFF;
+    text-align: right;
+    width: 100%;
+    min-width: 300px;
+    border: 2px solid rgba(0, 0, 0, 0.3);
+    max-width: 400px;
+    border-radius: 6px;
+    -webkit-box-shadow: 0 4px 19px -5px rgba(0, 0, 0, 0.43);
+    -moz-box-shadow: 0 4px 19px -5px rgba(0, 0, 0, 0.43);
+    box-shadow: 0 4px 19px -5px rgba(0, 0, 0, 0.43)
+}
+
+.uf-notification-inner .uf-content {
+    background: none;
+    color: #000000
+}
+
+.uf-content {
+    text-align: left;
+    padding: 13px 21px 21px 21px;
+    color: #000000;
+    font-size: 14px;
+    font-family: inherit;
+    margin: 0
+}
+
+.uf-content--without-title {
+    padding-top: 21px
+}
+
+.uf-bubble-content {
+    padding: 13px 21px 21px 21px;
+    font-family: inherit;
+    font-size: 14px;
+    color: #000000;
+    text-align: left
+}
+
+.uf-bubble-content--without-title {
+    padding-top: 21px
+}
+
+@keyframes beacon-animation {
+    from {
+        width: 0px;
+        height: 0px;
+        left: 5px;
+        top: 5px;
+        opacity: 1
+    }
+    66% {
+        width: 0px;
+        height: 0px;
+        left: 5px;
+        top: 5px;
+        opacity: 1
+    }
+    to {
+        width: 30px;
+        height: 30px;
+        left: -10px;
+        top: -10px;
+        opacity: 0.1
+    }
+}
+
+.uf-beacon {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: #ff9838;
+    border-radius: 50%
+}
+
+.uf-beacon__around {
+    position: absolute;
+    background-color: #ff9838;
+    opacity: 0.3;
+    border-radius: 50%;
+    animation-name: beacon-animation;
+    animation-duration: 3s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite
+}
+
+.uf-feedback {
+    text-align: center;
+    margin-bottom: 8px
+}
+
+.uf-feedback svg {
+    width: 32px;
+    height: 32px
+}
+
+.uf-feedback svg circle,
+.uf-feedback svg path,
+.uf-feedback svg polyline {
+    stroke: #000000
+}
+
+.uf-feedback svg rect,
+.uf-feedback svg ellipse {
+    fill: #000000
+}
+
+.uf-feedback button {
+    border: 0;
+    background: none
+}
+
+.uf-feedback button:disabled {
+    opacity: 0.5
+}
+
+.uf-content .large {
+    font-size: 40px
+}
+
+.uf-modal-inner iframe,
+.uf-slideout iframe {
+    background: #FFFFFF;
+    border: 0
+}
+
+.uf-overlay {
+    position: fixed;
+    background-color: #000;
+    opacity: 0;
+    filter: alpha(opacity=60);
+    z-index: 2147483646;
+    transition-property: left, top, width, height;
+    transition-duration: 250ms;
+    transition-timing-function: ease;
+    display: none
+}
+
+.uf-overlay.uf-visible {
+    display: block;
+    opacity: 0.6;
+    animation: none
+}
+
+.uf-overlay.uf-left {
+    left: 0;
+    top: 0
+}
+
+.uf-overlay.uf-top {
+    top: 0
+}
+
+.uf-overlay.uf-right {
+    top: 0;
+    right: 0
+}
+
+.uf-bubble {
+    position: absolute;
+    background: #FFFFFF;
+    border: 2px solid #666;
+    border-radius: 6px;
+    z-index: 2147483647;
+    display: none;
+    left: -9000px;
+    width: 400px;
+    -webkit-box-shadow: 0 4px 19px -5px rgba(0, 0, 0, 0.43);
+    -moz-box-shadow: 0 4px 19px -5px rgba(0, 0, 0, 0.43);
+    box-shadow: 0 4px 19px -5px rgba(0, 0, 0, 0.43);
+    max-width: 100%;
+    animation: fade-out 0;
+    line-height: 21px
+}
+
+.uf-bubble--invisible {
+    opacity: 0
+}
+
+.uf-bubble[data-show] {
+    display: block !important;
+    left: initial;
+    animation: fade-in 250ms
+}
+
+.uf-bubble:focus {
+    outline: none !important
+}
+
+.uf-bubble[data-popper-reference-hidden],
+.uf-bubble[data-popper-reference-hidden] .pointer::before {
+    visibility: hidden;
+    pointer-events: none
+}
+
+.uf-bubble p {
+    padding: 0;
+    margin: 0
+}
+
+.uf-bubble .pointer,
+.uf-bubble .pointer::before {
+    position: absolute;
+    box-sizing: border-box
+}
+
+.uf-bubble .pointer {
+    visibility: hidden;
+    overflow: hidden;
+    pointer-events: none;
+    width: 33px;
+    height: 33px
+}
+
+.uf-bubble .pointer::before {
+    display: block;
+    visibility: visible;
+    background-color: #FFFFFF;
+    content: '';
+    border: 2px solid #666;
+    width: 22px;
+    height: 22px
+}
+
+.uf-bubble[data-popper-placement^='top']>.pointer {
+    bottom: -33px
+}
+
+.uf-bubble[data-popper-placement^='top']>.pointer::before {
+    transform: translate(25%, -50%) rotate(45deg);
+    border-top-color: transparent !important;
+    border-left-color: transparent !important
+}
+
+.uf-bubble[data-popper-placement^='bottom']>.pointer {
+    top: -33px
+}
+
+.uf-bubble[data-popper-placement^='bottom']>.pointer::before {
+    bottom: 0;
+    transform: translate(25%, 50%) rotate(45deg);
+    border-bottom-color: transparent !important;
+    border-right-color: transparent !important
+}
+
+.uf-bubble[data-popper-placement^='left']>.pointer {
+    right: -33px
+}
+
+.uf-bubble[data-popper-placement^='left']>.pointer::before {
+    transform: translate(-50%, 25%) rotate(45deg);
+    border-bottom-color: transparent !important;
+    border-left-color: transparent !important
+}
+
+.uf-bubble[data-popper-placement^='right']>.pointer {
+    left: -33px
+}
+
+.uf-bubble[data-popper-placement^='right']>.pointer::before {
+    right: 0;
+    transform: translate(50%, 25%) rotate(45deg);
+    border-top-color: transparent !important;
+    border-right-color: transparent !important
+}
+
+.uf-bubble .uf-title {
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 20px;
+    color: #000000;
+    font-family: inherit;
+    padding: 13px 21px;
+    margin: 0
+}
+
+.uf-bubble .uf-close-button {
+    float: right;
+    top: 2px
+}
+
+.uf-progress {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    height: 5px;
+    overflow: hidden;
+    background-color: rgba(0, 0, 0, 0.15);
+    margin: 0;
+    width: 100%
+}
+
+.uf-progress--top {
+    position: absolute;
+    top: 0;
+    border-radius: 6px
+}
+
+.uf-progress--bottom {
+    position: absolute;
+    bottom: 0;
+    border-radius: 6px
+}
+
+.uf-progress .uf-progress-bar {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    color: #fff;
+    text-align: center;
+    background-color: #387DFF;
+    transition: width 0.6s ease
+}
+
+.uf-dot-progress {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    height: 21px;
+    overflow: hidden;
+    margin: 0;
+    width: 35%;
+    position: absolute;
+    bottom: 13px;
+    align-items: end
+}
+
+.uf-dot-progress--right {
+    right: 10px;
+    justify-content: end
+}
+
+.uf-dot-progress--left {
+    left: 10px
+}
+
+.uf-dot-progress--center {
+    width: 100%;
+    justify-content: center
+}
+
+.uf-dot-progress--free {
+    bottom: 41px
+}
+
+.uf-dot-progress__item {
+    background-color: rgba(0, 0, 0, 0.15);
+    width: 8px;
+    height: 8px;
+    margin-left: 5px;
+    border-radius: 50%
+}
+
+.uf-dot-progress__item--active {
+    background-color: #387DFF
+}
+
+.uf-circle-progress {
+    height: 40px;
+    width: 40px;
+    position: absolute;
+    bottom: 10px;
+    right: 10px
+}
+
+.uf-circle-progress--left {
+    left: 10px
+}
+
+.uf-circle-progress--center {
+    right: calc(50% - 20px)
+}
+
+.uf-circle-progress--free {
+    bottom: 41px
+}
+
+.uf-circle-progress__inner {
+    position: absolute;
+    z-index: 6;
+    top: 50%;
+    left: 50%;
+    height: 30px;
+    width: 30px;
+    margin: -15px 0 0 -15px;
+    background: #FFFFFF;
+    border-radius: 100%
+}
+
+.uf-circle-progress__bar {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.15);
+    -webkit-border-radius: 100%;
+    clip: rect(0px, 40px, 40px, 20px)
+}
+
+.uf-circle-progress__bar--right {
+    transform: rotate(180deg);
+    z-index: 3
+}
+
+.uf-circle-progress__progress {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    -webkit-border-radius: 100%;
+    clip: rect(0px, 20px, 40px, 0px);
+    background: #387DFF
+}
+
+.uf-number-progress {
+    height: 40px;
+    width: 40px;
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #999
+}
+
+.uf-number-progress--left {
+    left: 10px
+}
+
+.uf-number-progress--center {
+    right: calc(50% - 20px)
+}
+
+.uf-number-progress--free {
+    bottom: 41px
+}
+
+.uf-number-progress__divider {
+    margin: 0 1px
+}
+
+.uf-modal .uf-progress,
+.uf-slideout .uf-progress {
+    margin-top: 0
+}
+
+.uf-progress.hidden {
+    display: none
+}
+
+.uf-space-maker {
+    margin: 0;
+    height: 0;
+    padding: 0
+}
+
+.uf-space-maker--plus {
+    padding-top: 21px
+}
+
+.uf-space-maker--double {
+    padding-top: 55px
+}
+
+.uf-free-badge {
+    text-align: center;
+    background: rgba(0, 0, 0, 0.1);
+    padding: 5px;
+    font-size: 0.8rem;
+    border-radius: 0 0 6px 6px
+}
+
+.uf-free-badge a {
+    color: rgba(0, 0, 0, 0.7)
+}
+
+.uf-visible {
+    display: block !important;
+    opacity: 1;
+    left: initial;
+    animation: fade-in 250ms
+}
+
+.uf-bottom-action {
+    text-align: right;
+    padding-top: 8px
+}
+
+.uf-bottom-action a {
+    color: rgba(0, 0, 0, 0.6);
+    font-size: 14px;
+    font-family: inherit;
+    cursor: pointer
+}
+
+.uf-dot-progress--bpadding {
+    padding-bottom: 21px
+}
+
+.uf-circle-progress--bpadding {
+    padding-bottom: 55px
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0
+    }
+    to {
+        opacity: 1
+    }
+}
+
+@keyframes fade-out {
+    from {
+        opacity: 1
+    }
+    to {
+        opacity: 0
+    }
+}
+
+@media only screen and (max-width:600px) {
+    .uf-modal-inner {
+        width: 100% !important
+    }
+}
