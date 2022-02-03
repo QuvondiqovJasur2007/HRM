@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %}Kirish{% endblock title %}
+
+{% block content %}
+
+{% load static %}
+<html>
+
+    <head>
+        <link rel="stylesheet" href="{% static './style.css' %}">
+        <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="stylesheet" href="{% static './style.css' %}">
+        <title>Sign in</title>
+    </head>
+
+    <body>
+        <div class="main main2">
+            <h2>Saytga kirish</h2>
+            <form method="post">{% csrf_token %}
+                {{ form.as_p }}
+                <button class="btn btn-outline-success me-2" type="sumbit">Kirish</button>
+            </form>     
+                
+        </div>
+     
+    </body>
+
+</html>
+  
+     
+{% endblock content %}
